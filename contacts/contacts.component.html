@@ -1,0 +1,33 @@
+<app-contact-form [currentContact]="currentContact" [isEdit]="isEdit" (newContact)="onNewContact($event)"
+    (updatedContact)="onUpdatedContact($event)"></app-contact-form>
+<hr>
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">NAME</th>
+                <th scope="col">EMAIL</th>
+                <th scope="col">CONTACT</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let contact of contacts">
+                <td> {{contact.id}} </td>
+                <td> {{ contact.name }}</td>
+                <td> {{ contact.email }} </td>
+                <td> {{ contact.phone }} </td>
+                <td><button class="btn btn-success"> <a routerLink="/contact/{{ contact.id }}">
+                            View
+                        </a></button></td>
+                <td><button class="btn btn-warning" (click)="editContact(contact)">Edit</button></td>
+                <td><button class="btn btn-danger" (click)="removeContact(contact)">Delete</button></td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
